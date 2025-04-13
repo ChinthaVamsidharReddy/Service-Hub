@@ -11,6 +11,7 @@ interface BookingModalProps {
     full_name: string;
     service_type: string;
     hourly_rate: string;
+    experience_years?: number;
   };
   onClose: () => void;
   onSuccess: () => void;
@@ -96,7 +97,7 @@ export default function BookingModal({ worker, onClose, onSuccess }: BookingModa
             <button
               onClick={onClose}
               className="text-gray-500 hover:text-gray-700 transition-colors"
-            >line no:99
+            >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -105,7 +106,12 @@ export default function BookingModal({ worker, onClose, onSuccess }: BookingModa
 
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-800">{worker.full_name}</h3>
-            <p className="text-gray-600">{worker.service_type} - ${worker.hourly_rate}/hr</p>
+            <p className="text-gray-600 mb-1">{worker.service_type} - ₹{worker.hourly_rate}/hr</p>
+            {worker.experience_years ? (
+              <p className="text-sm text-gray-500">
+                Experience: {worker.experience_years} {worker.experience_years === 1 ? 'year' : 'years'}
+              </p>
+            ) : null}
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

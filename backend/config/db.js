@@ -8,7 +8,10 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME || 'skilled_workers_db',
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    ssl: process.env.DB_SSL === 'true' ? {
+        rejectUnauthorized: process.env.DB_SSL_REJECT_UNAUTHORIZED === 'true'
+    } : undefined
 });
 
 // Test database connection

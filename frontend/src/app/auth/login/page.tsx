@@ -109,11 +109,10 @@ export default function LoginPage() {
             transition={{ duration: 0.5 }}
             className="inline-block"
           >
-            <div className="bg-blue-600 text-white p-4 rounded-full inline-block mb-4">
-              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
+           <div className="flex items-center">
+            <img src="/logo.png" alt="Service Hub logo" className="w-24 h-24 rounded-full" />
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </div>
           </motion.div>
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
           <p className="text-gray-600">Sign in to access your account</p>
@@ -197,7 +196,7 @@ export default function LoginPage() {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-blue-600 hover:text-blue-500 transition-colors duration-200">
+                <a href="/auth/forgot-password" className="font-medium text-blue-600 hover:text-blue-500 transition-colors duration-200">
                   Forgot password?
                 </a>
               </div>

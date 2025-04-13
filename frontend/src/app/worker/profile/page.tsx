@@ -247,22 +247,27 @@ export default function WorkerProfilePage() {
             </div>
             <div>
               <label htmlFor="hourlyRate" className="block text-sm font-medium text-gray-700">
-                Hourly Rate ($)
+                Hourly Rate (₹)
                 <span className="text-red-500 ml-1">*</span>
-                <p className="text-xs text-gray-500 mt-1">
-                  Approximate ₹{errors.hourlyRate ? '0' : ((Number(watch('hourlyRate')) || 0) * 83).toFixed(0)} per hour
-                </p>
               </label>
-              <input 
-                type="number" 
-                step="0.01"
-                {...register('hourlyRate', { valueAsNumber: true })}
-                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                placeholder="Your hourly rate"
-              />
+              <div className="relative mt-1">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <span className="text-gray-500 sm:text-sm">₹</span>
+                </div>
+                <input 
+                  type="number" 
+                  step="0.01"
+                  {...register('hourlyRate', { valueAsNumber: true })}
+                  className="pl-7 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                  placeholder="Your hourly rate in Rupees"
+                />
+              </div>
               {errors.hourlyRate && <p className="text-red-500 text-xs mt-1">{errors.hourlyRate.message}</p>}
             </div>
           </div>
+          <p className="text-xs text-gray-500 mt-1">
+            Hourly rate in Indian Rupees (₹)
+          </p>
 
           <div>
             <label htmlFor="location" className="block text-sm font-medium text-gray-700">

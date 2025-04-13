@@ -486,8 +486,8 @@ export default function WorkerDashboard() {
           <div className="md:flex md:items-center md:justify-between">
             <div className="md:flex-1">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-                Welcome, {user.fullName}
-              </h1>
+                  Welcome, {user.fullName}
+                </h1>
               <p className="mt-3 text-xl text-blue-100">
                 <span className="inline-flex items-center bg-blue-800 bg-opacity-30 px-3 py-1 rounded-full text-sm">
                   {workerProfile.serviceType}
@@ -499,8 +499,8 @@ export default function WorkerDashboard() {
                   </svg>
                   {workerProfile.location}
                 </span>
-              </p>
-            </div>
+                </p>
+              </div>
             
             <div className="mt-6 md:mt-0 flex flex-wrap gap-3">
               <a 
@@ -512,28 +512,28 @@ export default function WorkerDashboard() {
                 </svg>
                 Edit Profile
               </a>
-              <a 
-                href="/dashboard/services" 
+                {/* <a 
+                  href="/dashboard/services" 
                 className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-600 bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clipRule="evenodd" />
-                </svg>
-                Services
-              </a>
-              <button 
-                onClick={handleLogout}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clipRule="evenodd" />
+                  </svg>
+                  Services
+                </a> */}
+                <button 
+                  onClick={handleLogout}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L14.586 11H7a1 1 0 110-2h7.586l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-                Logout
-              </button>
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L14.586 11H7a1 1 0 110-2h7.586l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                  Logout
+                </button>
+            </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -553,10 +553,10 @@ export default function WorkerDashboard() {
                     <dt className="text-sm font-medium text-gray-500 truncate">Hourly Rate</dt>
                     <dd>
                       <div className="text-3xl font-bold text-gray-900">
-                        ₹{((workerProfile.hourlyRate || 0) * 83).toFixed(0)}
+                        ₹{(workerProfile.hourlyRate || 0).toFixed(0)}
                       </div>
                       <div className="text-sm text-gray-500 mt-1">
-                        ${(workerProfile.hourlyRate || 0).toFixed(2)} USD
+                        Indian Rupees per hour
                       </div>
                     </dd>
                   </dl>
@@ -605,7 +605,7 @@ export default function WorkerDashboard() {
                     <dt className="text-sm font-medium text-gray-500 truncate">Status</dt>
                     <dd>
                       <div className="text-2xl font-bold text-gray-900">
-                        {workerProfile.availability ? 'Available' : 'Not Available'}
+                  {workerProfile.availability ? 'Available' : 'Not Available'}
                       </div>
                       <div className="text-sm text-gray-500 mt-1">
                         {workerProfile.availability 
@@ -617,8 +617,8 @@ export default function WorkerDashboard() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+              </div>
+            </div>
 
         {/* Bookings Section */}
         <div className="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100 mb-10">
@@ -634,8 +634,8 @@ export default function WorkerDashboard() {
               Refresh
             </button>
           </div>
-          
-          {bookings.length === 0 ? (
+            
+            {bookings.length === 0 ? (
             <div className="p-12 flex flex-col items-center justify-center">
               <div className="rounded-full bg-blue-100 p-4 mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -646,10 +646,10 @@ export default function WorkerDashboard() {
               <p className="text-gray-500 text-center max-w-md">
                 You'll see your bookings here once customers start booking your services. Keep your profile updated to attract more customers.
               </p>
-            </div>
-          ) : (
+              </div>
+            ) : (
             <div className="divide-y divide-gray-200">
-              {bookings.map((booking) => (
+                {bookings.map((booking) => (
                 <div key={booking.id} className="p-6 hover:bg-gray-50 transition-colors">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div className="flex-1">
@@ -664,18 +664,18 @@ export default function WorkerDashboard() {
                             {booking.customer_details?.name || booking.customerName || 'Unknown Customer'}
                           </h3>
                           <div className="flex items-center mt-1">
-                            <span 
+                      <span 
                               className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                booking.status === 'completed' ? 'bg-green-100 text-green-800' :
-                                booking.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                                booking.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
-                                booking.status === 'cancelled' ? 'bg-red-100 text-red-800' :
-                                booking.status === 'rejected' ? 'bg-gray-100 text-gray-800' :
-                                'bg-gray-100 text-gray-800'
-                              }`}
-                            >
+                          booking.status === 'completed' ? 'bg-green-100 text-green-800' :
+                          booking.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                          booking.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
+                          booking.status === 'cancelled' ? 'bg-red-100 text-red-800' :
+                          booking.status === 'rejected' ? 'bg-gray-100 text-gray-800' :
+                          'bg-gray-100 text-gray-800'
+                        }`}
+                      >
                               {booking.status.toUpperCase()}
-                            </span>
+                      </span>
                             <span className="ml-2 text-sm text-gray-500">{booking.serviceType}</span>
                           </div>
                         </div>
@@ -731,27 +731,27 @@ export default function WorkerDashboard() {
                     </div>
                     
                     {/* Action Buttons for various booking statuses */}
-                    {booking.status === 'pending' && (
+                      {booking.status === 'pending' && (
                       <div className="mt-4 md:mt-0 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
-                        <button 
-                          onClick={() => updateBookingStatus(booking.id, 'confirmed')}
+                          <button 
+                            onClick={() => updateBookingStatus(booking.id, 'confirmed')}
                           className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
-                        >
-                          Accept Booking
-                        </button>
-                        <button 
-                          onClick={() => updateBookingStatus(booking.id, 'rejected')}
+                          >
+                            Accept Booking
+                          </button>
+                          <button 
+                            onClick={() => updateBookingStatus(booking.id, 'rejected')}
                           className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
-                        >
-                          Reject Booking
-                        </button>
-                      </div>
-                    )}
+                          >
+                            Reject Booking
+                          </button>
+                        </div>
+                      )}
                   </div>
                 </div>
               ))}
-            </div>
-          )}
+                        </div>
+                      )}
         </div>
         
         {/* Rating & Reviews Summary (Placeholder for future feature) */}
@@ -779,7 +779,7 @@ export default function WorkerDashboard() {
                   ))}
                 </div>
                 <p className="text-gray-500 text-sm">Overall Rating</p>
-              </div>
+                        </div>
               
               <div className="flex flex-col justify-center">
                 <div className="mb-2">
@@ -798,13 +798,13 @@ export default function WorkerDashboard() {
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div className="bg-green-500 h-2 rounded-full" style={{ width: '90%' }}></div>
-                  </div>
-                </div>
+                        </div>
+                        </div>
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm text-gray-600">Response Time</span>
                     <span className="text-sm font-medium text-gray-900">88%</span>
-                  </div>
+                    </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div className="bg-green-500 h-2 rounded-full" style={{ width: '88%' }}></div>
                   </div>

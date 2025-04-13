@@ -15,7 +15,7 @@ router.get('/search', async (req, res) => {
         console.log('Location:', location);
         
         // Validate service type and normalize it
-        const validServiceTypes = ['home_cleaning', 'plumbing', 'electrical_work', 'painting'];
+        const validServiceTypes = ['home_cleaning', 'plumbing', 'electrical_work', 'painting','carpentry','pest_control','appliance_repair','gardening',''];
         const normalizedServiceType = serviceType ? serviceType.toLowerCase().trim() : '';
         
         console.log('Normalized Service Type:', normalizedServiceType);

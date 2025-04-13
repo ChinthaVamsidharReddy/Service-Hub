@@ -97,6 +97,7 @@ export default function WorkerSearchPage() {
       }
 
       const workersData = Array.isArray(response.data.data) ? response.data.data : [response.data.data];
+      console.log('Raw workers data from API:', workersData);
 
       if (workersData.length === 0) {
         setWorkers([]);
@@ -104,21 +105,33 @@ export default function WorkerSearchPage() {
         return;
       }
 
-      const sanitizedWorkers = workersData.map((worker: any) => ({
-        id: worker.id || worker.user_id || '',
-        user_id: worker.user_id || worker.id,
-        full_name: worker.full_name || worker.name || 'Unnamed Worker',
-        service_type: worker.service_type || serviceType,
-        hourly_rate: worker.hourly_rate ? String(worker.hourly_rate) : '0',
-        experience_years: Number(worker.experience_years || 0),
-        location: worker.location || location,
-        description: worker.description || '',
-        availability: worker.availability === undefined ? true : Boolean(worker.availability),
-        rating: worker.rating ? String(worker.rating) : '0',
-        total_reviews: Number(worker.total_reviews || 0),
-        email: worker.email || '',
-        phone: worker.phone || ''
-      }));
+      const sanitizedWorkers = workersData.map((worker: any) => {
+        console.log('Raw worker data:', worker); // Add detailed logging
+        
+        // Log specific fields to debug
+        console.log('Experience data:', {
+          experienceYears: worker.experienceYears,
+          experience_years: worker.experience_years,
+          experience: worker.experience
+        });
+        
+        return {
+          id: worker.id || worker.user_id || '',
+          user_id: worker.user_id || worker.id,
+          full_name: worker.full_name || worker.name || 'Unnamed Worker',
+          service_type: worker.service_type || serviceType,
+          hourly_rate: worker.hourlyRate || worker.hourly_rate || '0',
+          experience_years: worker.experience !== undefined ? Number(worker.experience) :
+                           Number(worker.experienceYears || worker.experience_years || 0),
+          location: worker.location || location,
+          description: worker.description || '',
+          availability: worker.availability === undefined ? true : Boolean(worker.availability),
+          rating: worker.rating ? String(worker.rating) : '0',
+          total_reviews: Number(worker.total_reviews || 0),
+          email: worker.email || '',
+          phone: worker.phone || ''
+        };
+      });
 
       console.log('Processed workers:', sanitizedWorkers);
       setWorkers(sanitizedWorkers);
@@ -371,18 +384,22 @@ export default function WorkerSearchPage() {
                 >
                   <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
                 </svg>
-                {worker.experience_years} {worker.experience_years === 1 ? 'Year' : 'Years'} Experience
+                <span className="font-medium">
+                  {worker.experience_years > 0 
+                    ? `${worker.experience_years} ${worker.experience_years === 1 ? 'Year' : 'Years'} Experience` 
+                    : 'Experience information unavailable'}
+                </span>
               </div>
               <div className="flex items-center text-sm text-gray-600">
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
-                  className="h-5 w-5 mr-2 text-green-500" 
+                  className="h-5 w-5 mr-2 text-blue-500" 
                   viewBox="0 0 20 20" 
                   fill="currentColor"
                 >
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
-                ${worker.hourly_rate}/hr
+                <span className="font-medium text-green-700">₹{worker.hourly_rate}/hr</span>
               </div>
               <div className="flex items-center text-sm text-gray-600">
                 <svg 
@@ -418,7 +435,8 @@ export default function WorkerSearchPage() {
                     id: worker.id,
                     full_name: worker.full_name,
                     service_type: worker.service_type,
-                    hourly_rate: worker.hourly_rate
+                    hourly_rate: worker.hourly_rate,
+                    experience_years: worker.experience_years
                   });
                   setSelectedWorker(worker);
                 }}
@@ -438,7 +456,8 @@ export default function WorkerSearchPage() {
             id: selectedWorker.id,
             full_name: selectedWorker.full_name,
             service_type: selectedWorker.service_type || 'home_cleaning',
-            hourly_rate: selectedWorker.hourly_rate
+            hourly_rate: selectedWorker.hourly_rate || '0',
+            experience_years: selectedWorker.experience_years || 0
           }}
           onClose={() => {
             console.log('Closing booking modal');

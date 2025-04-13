@@ -2,6 +2,8 @@
 
 Serverice Hub is a comprehensive platform connecting customers with service providers (workers) for various services like plumbing, electrical work, cleaning, and more. The platform enables seamless booking, management, and payment for services along with a review system.
 
+
+
 ![Serverice Hub Dashboard](screenshots/dashboard.png)
 *Main dashboard of the Serverice Hub application*
 
@@ -13,6 +15,8 @@ Serverice Hub is a comprehensive platform connecting customers with service prov
 - **Payment Processing**: Secure payment options including card payment and UPI/QR code
 - **Review System**: Leave reviews for completed services
 - **Dashboard**: Track all bookings with status updates
+
+
 
 ![Payment Interface](screenshots/payment-interface.png)
 *Secure and user-friendly payment interface*

@@ -29,14 +29,12 @@ export default function Header() {
         <div className="flex justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex">
-            <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="flex items-center">
-                <svg className="h-8 w-8 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-                <span className="ml-2 text-xl font-bold text-gray-900">ServiceHub</span>
-              </Link>
-            </div>
+          <div className="flex-shrink-0 flex items-center">
+  <Link href="/" className="flex items-center">
+    <img src="/logo.png" alt="ServiceHub Logo" className="h-16 w-16 rounded-full" />
+    <span className="ml-2 text-xl font-bold text-gray-900">ServiceHub</span>
+  </Link>
+</div>
           </div>
 
           {/* Desktop Navigation */}

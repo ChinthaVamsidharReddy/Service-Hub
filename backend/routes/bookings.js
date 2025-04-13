@@ -3,6 +3,7 @@ const router = express.Router();
 const pool = require('../config/db');
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
 console.log('Booking routes loaded'); // Debug log
 
@@ -87,7 +88,7 @@ router.post('/', [
         const endDateTime = new Date(`${bookingDate} ${endTime}`);
         const durationHours = (endDateTime - startDateTime) / (1000 * 60 * 60);
         const totalAmount = worker[0].hourly_rate * durationHours;
-        const platformFee = totalAmount * 0.4; // 40% platform fee
+        const platformFee = totalAmount * 0.2; // 40% platform fee
 
         // Check if platformFee is a number
         if (typeof platformFee !== 'number') {

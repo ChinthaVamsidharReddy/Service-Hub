@@ -23,7 +23,7 @@ const serviceInfo = {
       "Trained and verified staff",
       "Satisfaction guaranteed"
     ],
-    priceRange: "$25-$45 per hour",
+    priceRange: "₹250-₹450 per hour",
     icon: "🧹",
     color: "blue"
   },
@@ -45,11 +45,11 @@ const serviceInfo = {
       "Warranty on work",
       "Upfront pricing"
     ],
-    priceRange: "$50-$100 per hour",
+    priceRange: "₹500-₹1,000 per hour",
     icon: "🔧",
     color: "green"
   },
-  electrical_work: {
+  Electrical_work: {
     title: "Professional Electrical Services",
     description: "Safe and reliable electrical services for your home and business",
     longDescription: "Our certified electricians provide comprehensive electrical services with a focus on safety and reliability. From simple repairs to complete rewiring, we handle it all.",
@@ -67,7 +67,7 @@ const serviceInfo = {
       "Emergency response",
       "Quality assurance"
     ],
-    priceRange: "$60-$120 per hour",
+    priceRange: "₹600-₹1,200 per hour",
     icon: "⚡",
     color: "yellow"
   },
@@ -89,9 +89,97 @@ const serviceInfo = {
       "Color matching",
       "Protective covering"
     ],
-    priceRange: "$35-$75 per hour",
+    priceRange: "₹350-₹750 per hour",
     icon: "🎨",
     color: "purple"
+  },
+  carpentry: {
+    title: "Skilled Carpentry Services",
+    description: "Custom woodwork and furniture repairs by expert carpenters",
+    longDescription: "Our experienced carpenters specialize in custom woodworking, furniture repair, and installation services. We use quality materials and precise craftsmanship for outstanding results.",
+    features: [
+      "Custom furniture building",
+      "Door and window installation",
+      "Cabinet making and repair",
+      "Wooden flooring installation",
+      "Structural repairs"
+    ],
+    benefits: [
+      "Skilled craftsmen",
+      "Quality wood materials",
+      "Custom designs",
+      "Attention to detail",
+      "Timely completion"
+    ],
+    priceRange: "₹400-₹900 per hour",
+    icon: "🪚",
+    color: "brown"
+  },
+  pest_control: {
+    title: "Effective Pest Control",
+    description: "Comprehensive pest management services for your home and business",
+    longDescription: "Our professional pest control services eliminate unwanted pests and prevent future infestations. We use safe, eco-friendly methods that are effective against a wide range of pests common in India.",
+    features: [
+      "Cockroach treatment",
+      "Termite control",
+      "Rodent management",
+      "Mosquito and fly control",
+      "Bed bug elimination"
+    ],
+    benefits: [
+      "Safe for family and pets",
+      "Eco-friendly solutions",
+      "Preventive treatments",
+      "Expert technicians",
+      "Regular follow-ups"
+    ],
+    priceRange: "₹1,500-₹4,000 per service",
+    icon: "🐜",
+    color: "red"
+  },
+  appliance_repair: {
+    title: "Appliance Repair Services",
+    description: "Quick and reliable repairs for all your home appliances",
+    longDescription: "Our technicians are trained to diagnose and repair a wide range of household appliances. We provide fast, reliable service to get your appliances back in working order with minimal disruption.",
+    features: [
+      "Refrigerator repair",
+      "Washing machine servicing",
+      "AC maintenance and repair",
+      "Microwave and oven fixes",
+      "Water purifier servicing"
+    ],
+    benefits: [
+      "Experienced technicians",
+      "Genuine spare parts",
+      "90-day warranty",
+      "Same-day service",
+      "Transparent pricing"
+    ],
+    priceRange: "₹300-₹1,500 per service",
+    icon: "🔌",
+    color: "blue"
+  },
+  gardening: {
+    title: "Professional Gardening",
+    description: "Complete garden maintenance and landscaping services",
+    longDescription: "Our gardening professionals help maintain beautiful outdoor spaces. From regular maintenance to complete landscape transformations, we ensure your garden stays healthy and vibrant year-round.",
+    features: [
+      "Garden maintenance",
+      "Landscaping design",
+      "Plant selection and care",
+      "Irrigation system setup",
+      "Seasonal clean-ups"
+    ],
+    benefits: [
+      "Experienced gardeners",
+      "Eco-friendly practices",
+      "Regular scheduling options",
+      "Custom garden designs",
+      "Plant health expertise"
+    ],
+    priceRange: "₹300-₹700 per hour",
+    icon: "🌱",
+    color: "green"
   }
 };
 
@@ -102,12 +190,12 @@ const ServiceCard = ({ service, onClick }: { service: string; onClick: () => voi
     <motion.div
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
+      className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all"
       onClick={onClick}
     >
       <div className={`p-6 border-b border-gray-100`}>
         <div className="flex items-center gap-4">
-          <span className="text-4xl">{info.icon}</span>
+          <div className="text-4xl bg-blue-50 p-3 rounded-full">{info.icon}</div>
           <div>
             <h3 className="text-xl font-semibold text-gray-800">{info.title}</h3>
             <p className="text-gray-600 mt-1">{info.description}</p>
@@ -116,7 +204,10 @@ const ServiceCard = ({ service, onClick }: { service: string; onClick: () => voi
       </div>
       <div className="px-6 py-4">
         <p className="text-gray-500 text-sm">Starting from</p>
-        <p className="text-2xl font-bold text-gray-800">{info.priceRange}</p>
+        <p className="text-2xl font-bold text-green-700">{info.priceRange}</p>
+        <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          View Details
+        </button>
       </div>
     </motion.div>
   );
@@ -254,7 +345,7 @@ export default function ServicesPage() {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {Object.keys(serviceInfo).map((service) => (
             <ServiceCard
               key={service}
@@ -275,7 +366,7 @@ export default function ServicesPage() {
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             Why Choose Our Services?
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🌟</span>
@@ -294,8 +385,15 @@ export default function ServicesPage() {
               <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">💰</span>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Best Value</h3>
-              <p className="text-gray-600">Competitive pricing with no compromise on service quality</p>
+              <h3 className="text-lg font-semibold mb-2">Transparent Pricing</h3>
+              <p className="text-gray-600">Clear pricing in ₹ with no hidden charges or surprise fees</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🛡️</span>
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Service Guarantee</h3>
+              <p className="text-gray-600">100% satisfaction guarantee with service warranty on all work</p>
             </div>
           </div>
         </div>
