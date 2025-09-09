@@ -133,5 +133,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
-
-*Note: Replace the placeholder screenshot references with actual screenshots of your application. The recommended locations for screenshots are indicated above.* 
